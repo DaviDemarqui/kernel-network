@@ -28,4 +28,8 @@ export class SupabaseService {
     })
     return this._session
   }
+
+  signIn(email: string) {
+    return this.supabase.auth.signInWithOtp({ email })
+  }
 }
