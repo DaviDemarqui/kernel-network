@@ -30,12 +30,36 @@ export class SupabaseService {
     return this._session
   }
 
-  signIn(email: string) {
-    return this.supabase.auth.signInWithOtp({ email })
+  // signIn(email: string) {
+  //   return this.supabase.auth.signInWithOtp({ email })
+  // }
+
+  async signInWithEmail(email: string, password: string) {
+    const { data, error } = await this.supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+    if(error){ throw error}
+  }
+
+  async signOut() {
+    const { error } = await this.supabase.auth.signOut()
+    if(error){ throw error}
+  }
+
+  async register(email: string, password: string) {
+    try {
+      await this.supabase.auth.signUp({ email, password});
+    } catch (error) {
+      console.log(error)
+    } finally {
+      console.log("User registrated with suceess")
+    }
   }
 
   async getPosts() {
     const posts = await this.supabase.from('post').select()
     return posts.data || []
   }
+
 }

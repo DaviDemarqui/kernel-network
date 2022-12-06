@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
 
   signInForm = this.formBuilder.group({
     email: '',
+    password: ''
   })
 
   constructor(
@@ -25,10 +26,9 @@ export class LoginComponent implements OnInit {
   async onSubmit(): Promise<void> {
     try {
       this.loading = true
-      const email = this.signInForm.value.email as string
-      const {error} = await this.supabase.signIn(email)
-      if(error) throw error
-      alert('Da uma olhada no seu email porra')
+      const email = this.signInForm.value.email as string;
+      const password = this.signInForm.value.password as string
+      await this.supabase.signInWithEmail(email, password)
     } catch (error) {
       if(error instanceof Error) {
         alert(error.message)
