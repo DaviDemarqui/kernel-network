@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/models/post';
+import { SupabaseService } from 'src/app/supabase.service';
 
 @Component({
   selector: 'app-feed',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[] = [];
 
-  ngOnInit(): void {
+  constructor(private supabaseService: SupabaseService) {
+
+  }
+
+  async ngOnInit(): Promise<void> {
+    // let {posts, error } = await this.supabaseService.getPosts()
+    //   if(!error) {
+    //     this.posts = posts ?? []
+    //   }
+
+    this.posts = await this.supabaseService.getPosts()
   }
 
 }

@@ -8,6 +8,7 @@ import {
   User,
 } from '@supabase/supabase-js'
 import { environment } from "src/environments/environment";
+import { Post } from "./models/post";
 // import { Database } from 'src/schema';
 // Dps ver o porque da linha acima???
 
@@ -31,5 +32,10 @@ export class SupabaseService {
 
   signIn(email: string) {
     return this.supabase.auth.signInWithOtp({ email })
+  }
+
+  async getPosts() {
+    const posts = await this.supabase.from('post').select()
+    return posts.data || []
   }
 }
