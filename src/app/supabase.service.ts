@@ -33,12 +33,26 @@ export class SupabaseService {
     return this._session
   }
 
+  saveToken(token: any) {
+    if (token) {
+      localStorage.setItem('access_token', JSON.stringify(token));
+    }
+  }
 
   public isAuthenticated(): boolean {
-    if (this.session) {
+    let token = this.getToken();
+    if (token) {
       return true;
     }
     return false;
+  }
+
+  getToken() {
+    const tokenString = localStorage.getItem('sb-kjulugmdepadnaoksrus-auth-token');
+    if (tokenString) {
+      return tokenString;
+    }
+    return null;
   }
 
   // Metodo antigo de login horrivel usando link por email 🤮
@@ -77,19 +91,6 @@ export class SupabaseService {
     return posts.data || []
   }
 
-  getToken() {
-    const tokenString = localStorage.getItem('access_token');
-    if (tokenString) {
-      return JSON.parse(tokenString).refreshToken;
-      console.log("esse é o token")
-      console.log(tokenString)
-    }
-    return null;
-  }
-  saveToken(token: any) {
-    if (token) {
-      localStorage.setItem('access_token', JSON.stringify(token));
-    }
-  }
+
 
 }
