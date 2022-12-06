@@ -1,0 +1,5 @@
+#hero-tittle {
+  background: -webkit-linear-gradient(90deg, rgb(123, 120, 255) 0%, rgb(84, 149, 255) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
