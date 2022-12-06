@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FeedComponent } from './components/feed/feed.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FeedComponent } from './components/feed/feed.component';
     FooterComponent,
     LoginComponent,
     FeedComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
