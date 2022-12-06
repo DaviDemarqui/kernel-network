@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FooterComponent } from 'src/app/components/footer/footer.component';
-import { HeaderComponent } from 'src/app/components/header/header.component';
-import { HeroComponent } from './components/hero/hero.component';
+import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     {
       path: 'login', component: LoginComponent },
     {
-      path: '', component: HeaderComponent ,
+      path: '', component: HomeComponent ,
     }
 
 ];
