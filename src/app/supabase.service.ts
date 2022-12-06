@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import {
   AuthChangeEvent,
   AuthSession,
@@ -19,7 +20,9 @@ export class SupabaseService {
   private supabase: SupabaseClient
   _session: AuthSession | null = null
 
-  constructor() {
+  constructor(
+    private router: Router,
+  ) {
     this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey)
   }
 
@@ -30,6 +33,15 @@ export class SupabaseService {
     return this._session
   }
 
+
+  public isAuthenticated(): boolean {
+    if (this.session) {
+      return true;
+    }
+    return false;
+  }
+
+  // Metodo antigo de login horrivel usando link por email 🤮
   // signIn(email: string) {
   //   return this.supabase.auth.signInWithOtp({ email })
   // }
@@ -40,6 +52,9 @@ export class SupabaseService {
       password,
     })
     if(error){ throw error}
+    else {
+      this.router.navigate(['/login']);
+    }
   }
 
   async signOut() {
@@ -60,6 +75,21 @@ export class SupabaseService {
   async getPosts() {
     const posts = await this.supabase.from('post').select()
     return posts.data || []
+  }
+
+  getToken() {
+    const tokenString = localStorage.getItem('access_token');
+    if (tokenString) {
+      return JSON.parse(tokenString).refreshToken;
+      console.log("esse é o token")
+      console.log(tokenString)
+    }
+    return null;
+  }
+  saveToken(token: any) {
+    if (token) {
+      localStorage.setItem('access_token', JSON.stringify(token));
+    }
   }
 
 }
