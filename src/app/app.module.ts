@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FeedComponent } from './components/feed/feed.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
     FeedComponent,
     HomeComponent,
     CreateAccountComponent,
+    NewPostComponent,
   ],
   imports: [
     BrowserModule,

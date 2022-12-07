@@ -4,6 +4,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { HeroComponent } from './components/hero/hero.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
     {
       path: '', component: HeroComponent},
     {
-      path: 'home', component: HomeComponent, canActivate: [AuthGuard]}
+      path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+    {
+      path: 'new', component: NewPostComponent},
 
 ];
 
