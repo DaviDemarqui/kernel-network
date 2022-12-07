@@ -11,6 +11,8 @@ import { FeedComponent } from './components/feed/feed.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { NewPostComponent } from './components/new-post/new-post.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, LoggedInAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
