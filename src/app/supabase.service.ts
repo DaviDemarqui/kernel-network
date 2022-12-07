@@ -67,7 +67,7 @@ export class SupabaseService {
     })
     if(error){ throw error}
     else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
     }
   }
 
