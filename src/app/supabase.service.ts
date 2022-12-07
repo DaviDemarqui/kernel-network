@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
+import { JwtHelperService } from "@auth0/angular-jwt";
 import {
   AuthChangeEvent,
   AuthSession,
@@ -17,8 +19,13 @@ import { Post } from "./models/post";
   providedIn: 'root',
 })
 export class SupabaseService {
+
   private supabase: SupabaseClient
   _session: AuthSession | null = null
+
+  jwtHelper: JwtHelperService = new JwtHelperService();
+  idUsuario: string;
+
 
   constructor(
     private router: Router,
@@ -55,6 +62,13 @@ export class SupabaseService {
     return null;
   }
 
+  // getProfile() {
+  //   const { user } = this.supabase.auth.
+  // }
+
+
+
+
   // Metodo antigo de login horrivel usando link por email 🤮
   // signIn(email: string) {
   //   return this.supabase.auth.signInWithOtp({ email })
@@ -73,7 +87,7 @@ export class SupabaseService {
 
   async signOut() {
     const { error } = await this.supabase.auth.signOut()
-    if(error){ throw error}
+    if(error){ console.log(error)}
   }
 
   async register(email: string, password: string) {
@@ -91,6 +105,9 @@ export class SupabaseService {
     return posts.data || []
   }
 
+  async newPost(post: Post) {
+    await this.supabase.from('post').insert(post)
+  }
 
 
 }

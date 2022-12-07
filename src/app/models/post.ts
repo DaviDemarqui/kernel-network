@@ -1,8 +1,5 @@
-export interface Post{
-  id: number;
+export class Post{
   photo: string;
   description: string;
   likes: number;
-  created_at: Date;
-  user_id: number;
 }
