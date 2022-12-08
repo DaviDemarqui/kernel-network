@@ -8,6 +8,7 @@ import { SupabaseService } from 'src/app/supabase.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  logged: boolean = false;
 
   constructor(
     private readonly supabase: SupabaseService,
@@ -15,11 +16,19 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isLogged()
+  }
+
+  isLogged() {
+    if(this.supabase.isAuthenticated()) {
+      this.logged = true;
+      console.log(this.logged)
+    }
   }
 
   async logOut() {
     try {
-      await this.supabase.signOut()
+    await this.supabase.signOut()
     } catch (error) {
       console.log(error)
     } finally {

@@ -66,9 +66,6 @@ export class SupabaseService {
   //   const { user } = this.supabase.auth.
   // }
 
-
-
-
   // Metodo antigo de login horrivel usando link por email 🤮
   // signIn(email: string) {
   //   return this.supabase.auth.signInWithOtp({ email })
