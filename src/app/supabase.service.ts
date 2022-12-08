@@ -85,6 +85,9 @@ export class SupabaseService {
   async signOut() {
     const { error } = await this.supabase.auth.signOut()
     if(error){ console.log(error)}
+    else{
+      this.router.navigate(['']);
+    }
   }
 
   async register(email: string, password: string) {

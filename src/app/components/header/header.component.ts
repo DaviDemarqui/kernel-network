@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     } catch (error) {
       console.log(error)
     } finally {
-      this.router.navigate(['/home']);
+      this.router.navigate(['']);
     }
   }
 

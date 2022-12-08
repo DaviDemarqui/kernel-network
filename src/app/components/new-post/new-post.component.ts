@@ -30,6 +30,10 @@ export class NewPostComponent implements OnInit {
     this.criandoForm()
   }
 
+  atualizarPreview() {
+    
+  }
+
   criandoForm() {
     this.formPost = this.formBuilder.group({
       photo: [this.post?.photo],
