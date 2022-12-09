@@ -62,14 +62,20 @@ export class SupabaseService {
     return null;
   }
 
-  // getProfile() {
-  //   const { user } = this.supabase.auth.
-  // }
-
   // Metodo antigo de login horrivel usando link por email 🤮
   // signIn(email: string) {
   //   return this.supabase.auth.signInWithOtp({ email })
   // }
+
+
+  async getUserId() {
+    const data = (await this.supabase.auth.getUser()).data.user?.id;
+    if(data != null) {
+      return data
+    } else {
+      return console.error("Valor do usuario está null")
+    }
+  }
 
   async signInWithEmail(email: string, password: string) {
     const { data, error } = await this.supabase.auth.signInWithPassword({
