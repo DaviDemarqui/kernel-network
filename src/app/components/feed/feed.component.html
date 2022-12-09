@@ -1,5 +1,5 @@
 <section class="h-full pb-20 bg-gray-150 p-2">
-    <div *ngFor="let post of posts" class="grid pt-20 grid-cols-1 max-w-md m-auto">
+    <div *ngFor="let post of posts.reverse()" class="grid pt-20 grid-cols-1 max-w-md m-auto">
         <div class="items-center bg-gray-50 rounded shadow flex flex-col  light:border-gray-700 p-10">
           <a>
               <img class="w-full rounded-lg" src="{{post.photo}}" alt="Bonnie Avatar">
