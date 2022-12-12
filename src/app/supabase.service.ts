@@ -107,7 +107,7 @@ export class SupabaseService {
   }
 
   async getPosts() {
-    const posts = await this.supabase.from('post').select()
+    const posts = await this.supabase.from('post').select().order('created_at')
     return posts.data || []
   }
 
@@ -120,7 +120,8 @@ export class SupabaseService {
   }
 
   async putPostForLike(postId: string, like: number) {
-    await this.supabase.from('post').update({like}).eq('id', postId)
+    await this.supabase.from('post').update({like}).eq('id', postId);
+    console.log(like);
   }
 
 
