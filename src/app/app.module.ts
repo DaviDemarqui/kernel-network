@@ -13,6 +13,7 @@ import { CreateAccountComponent } from './components/create-account/create-accou
 import { NewPostComponent } from './components/new-post/new-post.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
+import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
     HomeComponent,
     CreateAccountComponent,
     NewPostComponent,
+    TextareaAutoresizeDirective,
   ],
   imports: [
     BrowserModule,

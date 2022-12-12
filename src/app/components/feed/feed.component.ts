@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { SupabaseService } from 'src/app/supabase.service';
 
@@ -21,7 +21,9 @@ export class FeedComponent implements OnInit {
     //     this.posts = posts ?? []
     //   }
 
-    this.posts = await this.supabaseService.getPosts()
+    this.posts = await this.supabaseService.getPosts();
+    console.log(scroll);
   }
+
 
 }
