@@ -14,6 +14,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
 import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
+import { PostViewComponent } from './components/post-view/post-view.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
     CreateAccountComponent,
     NewPostComponent,
     TextareaAutoresizeDirective,
+    PostViewComponent,
   ],
   imports: [
     BrowserModule,
