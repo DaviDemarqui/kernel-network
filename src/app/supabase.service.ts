@@ -115,5 +115,13 @@ export class SupabaseService {
     await this.supabase.from('post').insert(post)
   }
 
+  async getPostById(postId: string) {
+    await this.supabase.from('post').select().eq('id', postId).single()
+  }
+
+  async putPostForLike(postId: string, like: number) {
+    await this.supabase.from('post').update({like}).eq('id', postId)
+  }
+
 
 }
