@@ -33,7 +33,7 @@ export class FeedComponent implements OnInit {
 
   }
 
-  // FUNÇÃO PARA IVITAR ERROS AO ADD VIDEOS
+  // FUNÇÃO PARA EVITAR ERROS AO ADD VIDEOS
   //---------------------------------------
   // secureImage(link: string) {
   //   const safeLink = this.sanitizer.bypassSecurityTrustResourceUrl(link);
