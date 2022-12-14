@@ -111,6 +111,15 @@ export class SupabaseService {
     return posts.data || []
   }
 
+  
+
+  async getProfile() {
+    const userId = await this.getUserId();
+    const profile = await this.supabase.from('profiles').select().eq('id', userId).single();
+    console.log(JSON.stringify(profile.data));
+    return JSON.stringify(profile.data) || [];
+  }
+
   async newPost(post: Post) {
     await this.supabase.from('post').insert(post)
   }
@@ -119,9 +128,8 @@ export class SupabaseService {
     await this.supabase.from('post').select().eq('id', postId).single()
   }
 
-  async putPostForLike(postId: string, like: number) {
-    await this.supabase.from('post').update({like}).eq('id', postId);
-    console.log(like);
+  async putPostForLike(postId: string, liker: any) {
+    await this.supabase.from('post').upsert({likers: {liker}}).eq('id', postId).select();
   }
 
 

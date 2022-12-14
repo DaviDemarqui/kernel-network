@@ -13,7 +13,7 @@ export class FeedComponent implements OnInit {
 
   posts: Post[] = [];
   likeValue: number = 0;
-  likePost: Post;
+  liker: Post;
   likeClickCount: number;
 
   constructor(
@@ -26,12 +26,16 @@ export class FeedComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.posts = await this.supabaseService.getPosts()
   }
+  
 
-  async likeAction(like: number, postId: string) {
-    like++;
-    await this.supabaseService.putPostForLike(postId, like)
-
+  async likeAction(likers: any, postId: string) {
+    // like++;
+    likers = await this.supabaseService.getProfile();
+    await this.supabaseService.putPostForLike(postId, likers);
+    // this.likeClickCount = like;
+    // console.log(this.supabaseService.getPostById(postId));
   }
+
 
   // FUNÇÃO PARA EVITAR ERROS AO ADD VIDEOS
   //---------------------------------------
