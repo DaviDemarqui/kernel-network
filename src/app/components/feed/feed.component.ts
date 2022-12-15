@@ -15,7 +15,7 @@ export class FeedComponent implements OnInit {
   likeValue: number = 0;
   liker: Post;
   likeClickCount: number;
-
+  
   constructor(
     private supabaseService: SupabaseService,
     // public sanitizer: DomSanitizer
@@ -28,12 +28,14 @@ export class FeedComponent implements OnInit {
   }
   
 
-  async likeAction(likers: any, postId: string) {
+
+  async likeAction(postId: string, likers: any) {
     // like++;
     likers = await this.supabaseService.getProfile();
+    await this.supabaseService.getPostById(postId);
+
     await this.supabaseService.putPostForLike(postId, likers);
     // this.likeClickCount = like;
-    // console.log(this.supabaseService.getPostById(postId));
   }
 
 

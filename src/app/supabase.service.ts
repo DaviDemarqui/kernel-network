@@ -117,7 +117,7 @@ export class SupabaseService {
     const userId = await this.getUserId();
     const profile = await this.supabase.from('profiles').select().eq('id', userId).single();
     console.log(JSON.stringify(profile.data));
-    return JSON.stringify(profile.data) || [];
+    return profile.data;
   }
 
   async newPost(post: Post) {
@@ -128,8 +128,12 @@ export class SupabaseService {
     await this.supabase.from('post').select().eq('id', postId).single()
   }
 
-  async putPostForLike(postId: string, liker: any) {
-    await this.supabase.from('post').upsert({likers: {liker}}).eq('id', postId).select();
+  async putPostForLike(postId: string, likers: any) {
+    // await this.supabase.from('post').insert({likers: "{'firstName': 'Fernando', 'lastName': 'Pestillo'}"}).eq('id', postId);
+    await this.getPostById(postId);
+    await this.supabase.from('post').update({likers: [{likers}]}).eq('id', postId);
+    var seila = await this.supabase.from('post').select('likers').eq('id', postId).single();
+    console.log(seila.data)
   }
 
 
