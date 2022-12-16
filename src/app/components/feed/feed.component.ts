@@ -12,9 +12,6 @@ import { SupabaseService } from 'src/app/supabase.service';
 export class FeedComponent implements OnInit {
 
   posts: Post[] = [];
-  likeValue: number = 0;
-  liker: Post;
-  likeClickCount: number;
   
   constructor(
     private supabaseService: SupabaseService,
@@ -29,13 +26,13 @@ export class FeedComponent implements OnInit {
   
 
 
-  async likeAction(postId: string, likers: any) {
-    // like++;
-    likers = await this.supabaseService.getProfile();
+  async likeAction(postId: string, liker: any) {
+    liker = await this.supabaseService.getProfile();
+    var newliker = await Object.entries(liker)[0]
     await this.supabaseService.getPostById(postId);
+    
 
-    await this.supabaseService.putPostForLike(postId, likers);
-    // this.likeClickCount = like;
+    await this.supabaseService.putPostForLike(postId, newliker);
   }
 
 
