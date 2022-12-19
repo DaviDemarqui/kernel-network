@@ -132,7 +132,13 @@ export class SupabaseService {
     await this.getPostById(postId);
     var oldList = await this.supabase.from('post').select().eq('id', postId).single();
     var lista = oldList.data.likers
-    lista.push(liker)
+
+    if(lista.includes(liker)){
+      const index = lista.indexOf(liker)
+      lista.splice(index,1)
+    } else {
+      lista.push(liker)
+    }
 
     await this.supabase.from('post').update({likers: lista}).eq('id', postId);
   }
