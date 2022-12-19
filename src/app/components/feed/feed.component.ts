@@ -28,7 +28,7 @@ export class FeedComponent implements OnInit {
 
   async likeAction(postId: string, liker: any) {
     liker = await this.supabaseService.getProfile();
-    var newliker = await Object.entries(liker)[0]
+    var newliker = liker.id
     await this.supabaseService.getPostById(postId);
     
 
