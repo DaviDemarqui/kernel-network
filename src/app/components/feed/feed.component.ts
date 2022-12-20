@@ -20,8 +20,21 @@ export class FeedComponent implements OnInit {
 
   }
 
+  public notLiked:boolean = true;
+
+
   async ngOnInit(): Promise<void> {
-    this.posts = await this.supabaseService.getPosts()
+
+    const user = await this.supabaseService.getProfile();
+    const userId = user.id
+    console.log(userId)
+    this.posts = await this.supabaseService.getPosts();
+    for(let i = 0; i < this.posts.length; i++){
+      console.log(this.posts[i].description);
+      if(this.posts[i].likers.includes(userId)){
+        this.notLiked = false;
+      }
+    }
   }
   
 

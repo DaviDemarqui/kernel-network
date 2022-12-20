@@ -5,15 +5,17 @@
               <img class="w-full w-96 h-64 rounded-lg" src="{{post.photo}}" alt="Foto Bugou">
           </a>
             <div class="p-5 max-w-full flex flex-col justify-center items-center">
-                <!-- <h3 class="text-xl font-bold tracking-tight text-gray-900 light:text-white">
-                    <a href="#">{{post.name}}</a>
-                </h3> -->
                 <textarea appTextareaAutoresize [disabled]="true" class="resize-none just bg-gray-50 indent-0 w-80 text-black mb-4">{{ post.description }}</textarea>
                 <p class="mb-5">Likes: {{post.likers.length}}</p>
-                <button (click)="likeAction(post.id, post.likers)" class="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-32">
-                    Curti
+                <button *ngIf="notLiked; else isLiked" (click)="likeAction(post.id, post.likers)" class="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-32">
+                    Curtir
                 </button>
-                <!-- <button class=" bg-black hover:bg-indigo-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 w-full max-w-full py-3">Like</button> -->
+
+                <ng-template #isLiked >
+                    <button (click)="likeAction(post.id, post.likers)" class="bg-rose-700 hover:bg-rose-800 text-white font-semibold py-2 px-4 rounded w-32">
+                        Descurtir
+                    </button>
+                  </ng-template>
             </div>
         </div>
     </div>
