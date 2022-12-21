@@ -38,7 +38,7 @@ export class FeedComponent implements OnInit {
         semLike.push(true)
       }
     }
-    this.semLike = semLike
+    this.semLike = semLike.reverse()
     console.log(this.semLike)
     console.log(this.posts)
   }
