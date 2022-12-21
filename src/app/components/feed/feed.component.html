@@ -1,5 +1,5 @@
 <section class="h-full pb-20 bg-gray-150 p-2">
-    <div *ngFor="let post of posts.reverse()" class="grid pt-20 grid-cols-1 max-w-md m-auto">
+    <div *ngFor="let post of posts" class="grid pt-20 grid-cols-1 max-w-md m-auto">
         <div class="items-center bg-gray-50 rounded shadow flex flex-col  light:border-gray-700 p-10">
           <a>
               <img class="w-full w-96 h-64 rounded-lg" src="{{post.photo}}" alt="Foto Bugou">
@@ -7,7 +7,7 @@
             <div class="p-5 max-w-full flex flex-col justify-center items-center">
                 <textarea appTextareaAutoresize [disabled]="true" class="resize-none just bg-gray-50 indent-0 w-80 text-black mb-4">{{ post.description }}</textarea>
                 <p class="mb-5">Likes: {{post.likers.length}}</p>
-                <button *ngIf="semLike[post.likers.length]; else isLiked" (click)="likeAction(post.id, post.likers)" class="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-32">
+                <button *ngIf="semLike[posts.indexOf(post)]; else isLiked" (click)="likeAction(post.id, post.likers)" class="bg-teal-500 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded w-32">
                     Curtir 
                 </button>
 
