@@ -20,19 +20,29 @@ export class FeedComponent implements OnInit {
 
   }
 
-  public notLiked:boolean = true;
   semLike:any;
+  userId:any;
 
 
   async ngOnInit(): Promise<void> {
 
     const user = await this.supabaseService.getProfile();
-    const userId = user.id
+    this.userId = user.id
+    this.likeList();
     // console.log(userId)
-    this.posts = await this.supabaseService.getPosts();
+    
+    
+    // console.log(this.semLike)
+    // console.log(this.posts)
+  }
+  
+  async likeList() {
+    var posts = await this.supabaseService.getPosts();
+    console.log(posts)
+    this.posts = posts
     var semLike = []
-    for(let i = 0; i < this.posts.length; i++){
-      if(this.posts[i].likers.includes(userId)){
+    for(let i = 0; i < posts.length; i++){
+      if(posts[i].likers.includes(this.userId)){
         semLike.push(false)
       } else {
         semLike.push(true)
@@ -40,9 +50,7 @@ export class FeedComponent implements OnInit {
     }
     this.semLike = semLike.reverse()
     console.log(this.semLike)
-    console.log(this.posts)
   }
-  
 
 
   async likeAction(postId: string, liker: any) {
@@ -52,6 +60,7 @@ export class FeedComponent implements OnInit {
     
 
     await this.supabaseService.putPostForLike(postId, newliker);
+    this.likeList();
   }
 
 

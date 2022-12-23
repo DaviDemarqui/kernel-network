@@ -130,8 +130,9 @@ export class SupabaseService {
 
   async putPostForLike(postId: string, liker: any) {
     await this.getPostById(postId);
-    var oldList = await this.supabase.from('post').select().eq('id', postId).single();
-    var lista = oldList.data.likers
+    var post = await this.supabase.from('post').select().eq('id', postId).single();
+    var lista = post.data.likers
+    console.log(post.data)
 
     if(lista.includes(liker)){
       const index = lista.indexOf(liker)
