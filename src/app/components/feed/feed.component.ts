@@ -26,8 +26,8 @@ export class FeedComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    const user = await this.supabaseService.getProfile();
-    this.userId = user.id
+    // const user = await this.supabaseService.getProfile();
+    // this.userId = user.id
     this.likeList();
     // console.log(userId)
     

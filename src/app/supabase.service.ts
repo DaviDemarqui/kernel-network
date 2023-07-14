@@ -55,7 +55,7 @@ export class SupabaseService {
   }
 
   getToken() {
-    const tokenString = localStorage.getItem('sb-kjulugmdepadnaoksrus-auth-token');
+    const tokenString = localStorage.getItem('sb-iaqpwtoliaqcilistlau-auth-token');
     if (tokenString) {
       return tokenString;
     }
