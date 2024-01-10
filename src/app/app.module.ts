@@ -16,6 +16,7 @@ import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
 import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { SoriesComponent } from './components/sories/sories.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HeroComponent } from './components/hero/hero.component';
     NewPostComponent,
     TextareaAutoresizeDirective,
     PostViewComponent,
+    SoriesComponent,
   ],
   imports: [
     BrowserModule,
