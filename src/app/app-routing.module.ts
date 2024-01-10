@@ -13,7 +13,7 @@ const routes: Routes = [
     {
       path: 'login', component: LoginComponent, canActivate: [LoggedInAuthGuard]},
     {
-      path:'registrar', component: CreateAccountComponent, canActivate: [LoggedInAuthGuard]},
+      path:'create-account', component: CreateAccountComponent, canActivate: [LoggedInAuthGuard]},
     {
       path: '', component: HeroComponent},
     {

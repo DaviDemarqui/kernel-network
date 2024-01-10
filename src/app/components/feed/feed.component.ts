@@ -42,7 +42,7 @@ export class FeedComponent implements OnInit {
     this.posts = posts
     var semLike = []
     for(let i = 0; i < posts.length; i++){
-      if(posts[i].likers.includes(this.userId)){
+      if(posts[i].like){
         semLike.push(false)
       } else {
         semLike.push(true)

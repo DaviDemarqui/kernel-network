@@ -1,9 +1,20 @@
+<app-header class="z-50"></app-header>
 
-<body>
-  <app-header></app-header>
-  <app-feed></app-feed>
-  <div class="flex justify-center">
-    <a href="/new" class="inline-block bg-black rounded-t-3xl mx-3 cursor-pointer	 hover:bg-indigo-600 active:bg-blue-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3">New Post</a>
+<body class="bg-black">
+  <div class="relative">
+    <app-feed></app-feed>
+    <div class="absolute inset-0 flex items-center justify-center z-10" *ngIf="postCreationOpen">
+      <app-new-post></app-new-post>
+    </div>
+  </div>
+  
+  
+
+  <div *ngIf="!postCreationOpen" class="flex justify-center">
+    <button (click)="openPostCreation()" class="inline-block bg-black border border-zinc-400 rounded-t-3xl mx-3 cursor-pointer hover:bg-white hover:text-black active:bg-slate-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3 z-50">New Post</button>
+  </div>
+  <div *ngIf="postCreationOpen" class="flex justify-center">
+    <button *ngIf="postCreationOpen" (click)="openPostCreation()" class="inline-block bg-black border border-red-600 rounded-t-3xl mx-3 cursor-pointer hover:bg-red-500 active:bg-slate-700 focus-visible:ring ring-blue-300 text-red-500 hover:border-red-700 hover:text-black text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3 z-50">Back</button>
   </div>
 </body>
 

@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  postCreationOpen: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openPostCreation() {
+    this.postCreationOpen ? this.postCreationOpen = false : this.postCreationOpen = true;
   }
 
 }

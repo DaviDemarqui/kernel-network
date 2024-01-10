@@ -15,6 +15,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
 import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
 import { PostViewComponent } from './components/post-view/post-view.component';
+import { HeroComponent } from './components/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PostViewComponent } from './components/post-view/post-view.component';
     FeedComponent,
     HomeComponent,
     CreateAccountComponent,
+    HeroComponent,
     NewPostComponent,
     TextareaAutoresizeDirective,
     PostViewComponent,
@@ -32,7 +34,7 @@ import { PostViewComponent } from './components/post-view/post-view.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [AuthGuard, LoggedInAuthGuard],
   bootstrap: [AppComponent]
