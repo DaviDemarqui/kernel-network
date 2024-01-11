@@ -34,8 +34,8 @@
 
 
   <!-- component -->
-<div class="relative min-h-screen min-w-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">	
-  <div class="absolute bg-black opacity-80 backdrop-blur-lg inset-0 z-0"></div>
+<div class="relative h-screen w-[99vw] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">	
+  <div class="absolute bg-black opacity-80 backdrop-blur-lg inset-0 z-0 w-full h-full"></div>
 	<div class="sm:max-w-lg w-full p-10 bg-black rounded-xl z-10 border border-zinc-800">
 		<div class="text-center">
 			<h2 class="mt-5 text-3xl font-bold text-white">
@@ -43,27 +43,26 @@
 			</h2>
 			<p class="mt-2 text-sm text-gray-400">Register your memory here.</p>
 		</div>
-        <form class="mt-8 space-y-3" action="#" method="POST">
+        <form class="mt-8 space-y-3" [formGroup]="formPost" (ngSubmit)="onSubmit()">
                     <div class="grid grid-cols-1 space-y-2">
                         <label class="text-sm font-bold text-gray-500 tracking-wide">Title</label>
-                            <input class="text-base p-2 border border-zinc-700 bg-black rounded-lg focus:outline-none focus:border-blue-500" type="" placeholder="Description">
+                            <input class="text-base p-2 border border-zinc-700 text-slate-300 bg-black rounded-lg focus:outline-none focus:border-blue-500" type="text" formControlName="description" placeholder="Description">
                     </div>
                     <div class="grid grid-cols-1 space-y-2">
-                                    <label class="text-sm font-bold text-gray-500 tracking-wide">Attach Image</label>
+                        <label class="text-sm font-bold text-gray-500 tracking-wide">Attach Image</label>
                         <div class="flex items-center justify-center w-full">
                             <label class="flex flex-col rounded-lg border border-dashed border-zinc-500 w-full h-60 p-10 group text-center">
                                 <div class="h-full w-full text-center flex flex-col items-center justify-center">
-                                    <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                    </svg>-->
                                     <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-5">
-                                    <img class="has-mask h-32 object-center" src="https://bestanimations.com/media/computers/46611517funny-computer-animated-gif-29.gif" alt="best animations image">
+                                      <img class="has-mask h-32 object-center" src="https://bestanimations.com/media/computers/46611517funny-computer-animated-gif-29.gif" alt="best animations image">
                                     </div>
                                     <p class="pointer-none text-gray-500 "><span class="text-sm">Drag and drop</span> files here <br /> or <a href="" id="" class="text-blue-600 hover:font-medium hover:underline">select a file</a> from your computer</p>
                                 </div>
-                                <input type="file" class="hidden">
+                                <input type="file" class="hidden" formControlName="photo" (change)="onFileChange($event)">
                             </label>
                         </div>
+                        <p *ngIf="formPost.get('photo')?.value" class="text-white">Selected Image: <b class="text-teal-400">{{formPost.get('photo')?.value}}</b></p>
+
                     </div>
                             <p class="text-sm text-gray-300">
                                 <span>File type: doc,pdf,types of images</span>

@@ -15,6 +15,7 @@ import { SupabaseService } from 'src/app/supabase.service';
 export class NewPostComponent implements OnInit {
   loading = false;
   post: Post;
+  selectedPhoto: File;
   formPost: FormGroup;
   authUserId: Promise<any>
 
@@ -63,10 +64,31 @@ export class NewPostComponent implements OnInit {
     })
   }
 
+  onFileChange(event: any) {
+    this.selectedPhoto = event.target.files[0];
+    if (this.selectedPhoto) {
+      const reader = new FileReader();
+      console.log(this.selectedPhoto);
+  
+      reader.onload = (e: any) => {
+        // Set the file content to the form control
+        this.formPost.patchValue({
+          fileInput: e.target.result
+        });
+      };
+
+      console.log(this.formPost.get('photo')?.value);
+  
+      reader.readAsDataURL(this.selectedPhoto); // You can use other methods based on your requirements
+    }
+  }
+
   async onSubmit() {
+    console.log(this.formPost.value);
     try {
       this.loading = true;
-      await this.supabase.newPost(this.formPost.value)
+      // await this.supabase.newPost(this.formPost.value)
+      await this.supabase.uploadPost(this.formPost, this.selectedPhoto);
     } catch (error) {
       alert(error)
       console.log(error)

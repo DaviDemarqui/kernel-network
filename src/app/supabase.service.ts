@@ -89,7 +89,8 @@ export class SupabaseService {
   }
 
   async signOut() {
-    const { error } = await this.supabase.auth.signOut()
+    const { error } = await this.supabase.auth.signOut();
+    localStorage.removeItem('sb-iaqpwtoliaqcilistlau-auth-token')
     if(error){ console.log(error)}
     else{
       this.router.navigate(['']);
@@ -144,5 +145,28 @@ export class SupabaseService {
     await this.supabase.from('post').update({likers: lista}).eq('id', postId);
   }
 
+  
+  async uploadPost(form: FormGroup, selectedFile: File) {
+    let post = new Post();
+    const { data, error } = await this.supabase.storage.from('post_image').upload(selectedFile.name, selectedFile);
+    if (error) {
+      console.error(error);
+    } else {
+      try {
+        const { data, error } = await this.supabase.storage.from('post_image').download(selectedFile.name);
+        if (error) {
+          throw error;
+        }
+        const url = URL.createObjectURL(data);
+        post.photo = url;
+      } catch (error) {
+        console.log('Error downloading image: ', error);
+      }
+      post.description = form.get('description')?.value;
+      post.photo = data;
+      console.log(post);
+      await this.newPost(post);
+    }
+  }
 
 }
