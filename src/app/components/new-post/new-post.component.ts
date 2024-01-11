@@ -61,6 +61,7 @@ export class NewPostComponent implements OnInit {
     this.formPost = this.formBuilder.group({
       photo: [this.post?.photo],
       description: [this.post?.description],
+      feel: [this.post?.feel],
     })
   }
 

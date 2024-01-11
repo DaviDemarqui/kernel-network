@@ -153,17 +153,14 @@ export class SupabaseService {
       console.error(error);
     } else {
       try {
-        const { data, error } = await this.supabase.storage.from('post_image').download(selectedFile.name);
-        if (error) {
-          throw error;
-        }
-        const url = URL.createObjectURL(data);
-        post.photo = url;
+        const { data } = await this.supabase.storage.from('post_image').getPublicUrl(selectedFile.name);
+        console.log(data);
+        post.photo = data.publicUrl;
       } catch (error) {
         console.log('Error downloading image: ', error);
       }
       post.description = form.get('description')?.value;
-      post.photo = data;
+      post.feel = form.get('feel')?.value;
       console.log(post);
       await this.newPost(post);
     }
