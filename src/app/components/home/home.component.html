@@ -1,4 +1,4 @@
-<app-header class="z-50"></app-header>
+<!-- <app-header class="z-50"></app-header> -->
 
 <div class="absolute inset-0 flex items-center justify-center z-10" *ngIf="postCreationOpen">
   <app-new-post></app-new-post>
@@ -13,10 +13,10 @@
 
   <!-- POST BUTTONS -->
   <div *ngIf="!postCreationOpen" class="flex justify-center">
-    <button (click)="openPostCreation()" class="inline-block bg-black border border-zinc-400 rounded-t-3xl mx-3 cursor-pointer hover:bg-white hover:text-black active:bg-slate-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3 z-50">New Post</button>
+    <button (click)="openPostCreation()" class="inline-block bg-[#000000cc] backdrop:opacity-0 backdrop-blur-lg border-[1px] border-b-transparent border-zinc-700 hover:border-white rounded-t-3xl mx-3 cursor-pointer hover:bg-white hover:text-black active:bg-slate-700 focus-visible:ring ring-blue-300 text-white text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3 z-50">New Post</button>
   </div>
   <div *ngIf="postCreationOpen" class="flex justify-center">
-    <button *ngIf="postCreationOpen" (click)="openPostCreation()" class="inline-block bg-black border border-red-600 rounded-t-3xl mx-3 cursor-pointer hover:bg-red-500 active:bg-slate-700 focus-visible:ring ring-blue-300 text-red-500 hover:border-red-700 hover:text-black text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3 z-50">Back</button>
+    <button *ngIf="postCreationOpen" (click)="openPostCreation()" class="inline-block bg-[#000000cc] backdrop:opacity-0 backdrop-blur-lg border-[1px] border-b-transparent border-red-600 rounded-t-3xl mx-3 cursor-pointer hover:bg-red-500 active:bg-slate-700 focus-visible:ring ring-blue-300 text-red-500 hover:border-red-700 hover:text-black text-sm md:text-base font-semibold text-center outline-none transition duration-100 fixed bottom-0 w-4/12 py-3 z-50">Back</button>
   </div>
 </body>
 
