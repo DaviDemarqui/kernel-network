@@ -9,7 +9,8 @@ import { SupabaseService } from 'src/app/supabase.service';
 })
 export class HeaderComponent implements OnInit {
   logged: boolean = false;
-
+  isDropdownOpen = false;
+  
   constructor(
     private readonly supabase: SupabaseService,
     private router: Router,
@@ -17,6 +18,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLogged()
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   isLogged() {

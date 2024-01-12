@@ -12,6 +12,7 @@ import { SupabaseService } from 'src/app/supabase.service';
 export class FeedComponent implements OnInit {
 
   posts: Post[] = [];
+  postViewerOpen = false;
   
   constructor(
     private supabaseService: SupabaseService,
@@ -34,6 +35,10 @@ export class FeedComponent implements OnInit {
     
     // console.log(this.semLike)
     // console.log(this.posts)
+  }
+
+  openPostViewer() {
+    this.postViewerOpen ? this.postViewerOpen = false : this.postViewerOpen = true;
   }
   
   async likeList() {

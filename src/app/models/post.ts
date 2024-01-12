@@ -1,7 +1,10 @@
 export class Post{
-  id: string;
+  post_id: number;
+  username: string;
+  avatar_url: string;
   photo: any;
   feel: string;
   description: string;
-  like: any;
+  created_at: Date;
+  like_count: any;
 }

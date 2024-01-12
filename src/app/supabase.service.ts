@@ -12,6 +12,7 @@ import {
 } from '@supabase/supabase-js'
 import { environment } from "src/environments/environment";
 import { Post } from "./models/post";
+import { Comment } from "./models/comment";
 // import { Database } from 'src/schema';
 // Dps ver o porque da linha acima???
 
@@ -108,11 +109,18 @@ export class SupabaseService {
   }
 
   async getPosts() {
-    const posts = await this.supabase.from('post').select().order('created_at')
+    const posts = await this.supabase.from('feed_posts_view').select().order('created_at');
     return posts.data || []
   }
 
-  
+  async getComments(postId: number) {
+    const comments = await this.supabase.from('post_comments_view').select().eq('post_id', postId);
+    return comments.data || []
+  }
+
+  async newComment(comment: Comment) {
+    await this.supabase.from('comments').insert(comment);
+  }
 
   async getProfile() {
     const userId = await this.getUserId();
