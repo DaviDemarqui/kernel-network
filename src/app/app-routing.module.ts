@@ -21,7 +21,7 @@ const routes: Routes = [
     {
       path: 'new', component: NewPostComponent, canActivate: [AuthGuard]},
     {
-      path: 'view', component: PostViewComponent, canActivate: [AuthGuard]},
+      path: 'view/:id', component: PostViewComponent, canActivate: [AuthGuard]},
 
 ];
 

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from 'src/app/models/post';
 import { SupabaseService } from 'src/app/supabase.service';
 // import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -16,65 +17,18 @@ export class FeedComponent implements OnInit {
   
   constructor(
     private supabaseService: SupabaseService,
-    // public sanitizer: DomSanitizer
-    ) {
-
-  }
-
-  semLike:any;
-  userId:any;
-
+    private router: Router
+    ) {}
 
   async ngOnInit(): Promise<void> {
-
-    // const user = await this.supabaseService.getProfile();
-    // this.userId = user.id
-    this.likeList();
-    // console.log(userId)
-    
-    
-    // console.log(this.semLike)
-    // console.log(this.posts)
+    this.getPosts();
   }
 
-  openPostViewer() {
-    this.postViewerOpen ? this.postViewerOpen = false : this.postViewerOpen = true;
+  openPostViewer(post: Post) {
+      this.router.navigate(['/view', post.post_id]);
   }
   
-  async likeList() {
-    var posts = await this.supabaseService.getPosts();
-    console.log(posts)
-    this.posts = posts
-    var semLike = []
-    for(let i = 0; i < posts.length; i++){
-      if(posts[i].like){
-        semLike.push(false)
-      } else {
-        semLike.push(true)
-      }
-    }
-    this.semLike = semLike.reverse()
-    console.log(this.semLike)
+  async getPosts() {
+    this.posts = await this.supabaseService.getPosts();
   }
-
-
-  async likeAction(postId: string, liker: any) {
-    liker = await this.supabaseService.getProfile();
-    var newliker = liker.id
-    await this.supabaseService.getPostById(postId);
-    
-
-    await this.supabaseService.putPostForLike(postId, newliker);
-    this.likeList();
-  }
-
-
-  // FUNÇÃO PARA EVITAR ERROS AO ADD VIDEOS
-  //---------------------------------------
-  // secureImage(link: string) {
-  //   const safeLink = this.sanitizer.bypassSecurityTrustResourceUrl(link);
-
-  //   return safeLink;
-  // }
-
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Comment } from 'src/app/models/comment';
 import { Post } from 'src/app/models/post';
 import { PostCommentView } from 'src/app/models/post_comment_view';
@@ -17,16 +18,22 @@ export class PostViewComponent implements OnInit {
   comments: any[] = [];
   formComment: FormGroup;
   loading: boolean = false;
+  postId: number;
 
   constructor(
     private supabase: SupabaseService,
     private readonly formBuilder: FormBuilder,
+    private route: ActivatedRoute
   ) { }
 
   async ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.postId = params['id'];
+    });
+    this.post = await this.supabase.getPostById(this.postId);
     console.log(this.post)
     this.criandoForm();
-    this.comments = await this.supabase.getComments(this.post.post_id);
+    this.comments = await this.supabase.getComments(this.postId);
     console.log(this.comments)
   }
 

@@ -1,13 +1,14 @@
 <!-- <app-header class="z-50"></app-header> -->
 
-<div class="absolute inset-0 flex items-center justify-center z-10" *ngIf="postCreationOpen">
-  <app-new-post></app-new-post>
-</div>
+<!-- <div class="absolute inset-0 flex items-center justify-center z-10" *ngIf="postCreationOpen"> -->
+  <!-- <app-new-post *ngIf="postCreationOpen"></app-new-post> -->
+<!-- </div> -->
 
-<app-sories></app-sories>
+<app-sories *ngIf="!postCreationOpen"></app-sories>
 <body class="bg-black">
+  <app-new-post *ngIf="postCreationOpen"></app-new-post>
 
-  <div class="relative">
+  <div *ngIf="!postCreationOpen" class="relative">
     <app-feed></app-feed>
   </div>
 

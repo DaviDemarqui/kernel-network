@@ -1,4 +1,5 @@
-<section class="h-full w-full z-50 fixed top-1/2 transform -translate-y-1/2 pt-[100px] bg-black">    <div class="bg-black border border-zinc-800 rounded-lg max-w-xl mx-auto mt-5">
+<section class="h-full pt-[100px] bg-black">    
+    <div class="bg-black border border-zinc-800 rounded-lg max-w-xl mx-auto mt-5">
         <div class="flex items-center px-4 py-3">
             <img class="h-8 w-8 rounded-full" [src]="post.avatar_url"/>
             <div class="ml-3 ">
@@ -24,7 +25,7 @@
     <section class="bg-black py-8 lg:py-16">
         <div class="max-w-2xl mx-auto px-4">
             <div class="flex justify-between items-center mb-6">
-            <h2 class="text-lg lg:text-2xl font-bold text-gray-50"></h2>
+            <h2 class="text-lg lg:text-2xl font-bold text-gray-50">Comments</h2>
         </div>
         <form class="mb-6" [formGroup]="formComment">
             <div class="py-2 px-4 mb-4 bg-black rounded-lg rounded-t-lg border border-zinc-800">

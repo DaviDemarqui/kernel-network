@@ -130,27 +130,13 @@ export class SupabaseService {
   }
 
   async newPost(post: Post) {
-    await this.supabase.from('post').insert(post)
+    await this.supabase.from('posts').insert(post)
   }
 
-  async getPostById(postId: string) {
-    await this.supabase.from('post').select().eq('id', postId).single()
-  }
-
-  async putPostForLike(postId: string, liker: any) {
-    await this.getPostById(postId);
-    var post = await this.supabase.from('post').select().eq('id', postId).single();
-    var lista = post.data.likers
+  async getPostById(postId: number) {
+    let post = await this.supabase.from('feed_posts_view').select().eq('post_id', postId).single();
     console.log(post.data)
-
-    if(lista.includes(liker)){
-      const index = lista.indexOf(liker)
-      lista.splice(index,1)
-    } else {
-      lista.push(liker)
-    }
-
-    await this.supabase.from('post').update({likers: lista}).eq('id', postId);
+    return post.data || null;
   }
 
   
