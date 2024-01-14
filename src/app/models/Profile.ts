@@ -1,6 +1,8 @@
 export interface Profile {
-  id?: string
+  id: string
   username: string
-  website: string
+  full_name: string
   avatar_url: string
+  bio: string;
+  created_at: Date;
 }

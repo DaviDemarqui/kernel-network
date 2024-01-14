@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Comment } from 'src/app/models/comment';
-import { Post } from 'src/app/models/post';
-import { PostCommentView } from 'src/app/models/post_comment_view';
+import { Comment } from 'src/app/models/Comment';
+import { Post } from 'src/app/models/Post';
 import { SupabaseService } from 'src/app/supabase.service';
 
 @Component({

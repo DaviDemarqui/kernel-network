@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MinProfile } from 'src/app/models/MinProfile';
 import { SupabaseService } from 'src/app/supabase.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { SupabaseService } from 'src/app/supabase.service';
 export class HeaderComponent implements OnInit {
   logged: boolean = false;
   isDropdownOpen = false;
+  profile: MinProfile;
   
   constructor(
     private readonly supabase: SupabaseService,
@@ -17,11 +19,18 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isLogged()
+    this.isLogged();
+    if(this.logged) {
+      this.getProfile();
+    }
   }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  async getProfile() {
+    this.profile = await this.supabase.getMinProfile();
   }
 
   isLogged() {
@@ -33,7 +42,8 @@ export class HeaderComponent implements OnInit {
 
   async logOut() {
     try {
-    await this.supabase.signOut()
+      await this.supabase.signOut();
+      this.logged = false;
     } catch (error) {
       console.log(error)
     } finally {

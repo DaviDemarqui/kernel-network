@@ -11,8 +11,8 @@ import {
   User,
 } from '@supabase/supabase-js'
 import { environment } from "src/environments/environment";
-import { Post } from "./models/post";
-import { Comment } from "./models/comment";
+import { Post } from "./models/Post";
+import { Comment } from "./models/Comment";
 // import { Database } from 'src/schema';
 // Dps ver o porque da linha acima???
 
@@ -129,6 +129,24 @@ export class SupabaseService {
     return profile.data;
   }
 
+  async getMinProfile() {
+    const userId = await this.getUserId();
+    const minProfile = await this.supabase.from('min_profile').select().eq('id', userId).single();
+    return minProfile.data;
+  }
+
+  async getCompleteProfile() {
+    const userId = await this.getUserId();
+    const profile = await this.supabase.from('profiles').select().eq('id', userId).single();
+    return profile.data;
+  }
+
+  // this request will used when a non editable profile is visited;
+  async getCompleteProfileNonEdit(profileId: string) {
+    const profile = await this.supabase.from('profiles').select().eq('id', profileId).single();
+    return profile.data;
+  }
+
   async newPost(post: Post) {
     await this.supabase.from('posts').insert(post)
   }
@@ -137,6 +155,17 @@ export class SupabaseService {
     let post = await this.supabase.from('feed_posts_view').select().eq('post_id', postId).single();
     console.log(post.data)
     return post.data || null;
+  }
+
+  async getUserPostsVisit(id: string): Promise<any[]> {
+    let posts = await this.supabase.from('feed_posts_view').select('*').eq('created_by', id);
+    return posts.data || [];
+  }
+  
+  async getUserPostEdit(): Promise<any[]> {
+    let userId = this.getUserId();
+    let posts = await this.supabase.from('feed_posts_view').select('*').eq('created_by', userId);
+    return posts.data || [];
   }
 
   

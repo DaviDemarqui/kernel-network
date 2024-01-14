@@ -1,50 +1,32 @@
 <div class="max-w-lg mx-auto pt-20">
-    <h2 class="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-pink-600">introducing ...</h2>
-    <p class="text-5xl lg:text-6xl leading-none font-extrabold text-slate-200 mb-8 mt-4">BeKim Stories.</p>
-  
-    <ul class="flex space-x-6">
+  <h2 class="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-pink-600">introducing ...</h2>
+  <p class="text-5xl lg:text-6xl leading-none font-extrabold text-slate-200 mb-8 mt-4">Kernel Stories.</p>
+
+  <ul class="flex space-x-6 overflow-x-auto">
       <li class="flex flex-col items-center space-y-1 ">
-        <div class="relative bg-gradient-to-tr from-teal-400 to-purple-600 p-[1px] rounded-md">
-          <a href="#" class="block p-[1px] rounded-lg transform transition">
-            <img class="w-36 h-36 rounded-md" src="https://i.pinimg.com/736x/5a/a6/6e/5aa66ecba05d2011ce88750e578ba962.jpg" alt="stories_preview">
-          </a>
-          <button class="absolute bg-zinc-900 text-white text-2xl font-medium w-8 h-8 rounded-full bottom-[2px] right-1 border-[3px] border-white flex justify-center items-center font-mono hover:bg-slate-700 focus:outline-none">
-            <div class="transform -translate-y-px">+</div>
-          </button>
-        </div>
-  
-        <a href="#">storie_one</a>
+          <div class="relative bg-gradient-to-tr from-teal-400 to-pink-600 p-[2px] rounded-full">
+              <a href="#" class="block p-[1px] rounded-full transform transition">
+                  <img class="w-20 h-20 rounded-full" src="https://i.pinimg.com/736x/5a/a6/6e/5aa66ecba05d2011ce88750e578ba962.jpg" alt="stories_preview">
+              </a>
+                <label for="fileInput" class="absolute bg-black text-white text-2xl font-medium w-8 h-8 rounded-full bottom-[2px] right-1 flex justify-center items-center font-mono hover:bg-white hover:text-black border-[1px] border-white focus:outline-none cursor-pointer">
+                  <input type="file" id="fileInput" class="absolute opacity-0 h-0 w-0 cursor-pointer" (change)="onFileChange($event)" />
+                  <div class="transform -translate-y-px mt-1">+</div>
+              </label>
+                <!-- Your existing content -->
+          </div>
+
+          <a href="#">storie_one</a>
       </li>
-  
+
       <li class="flex flex-col items-center space-y-1 ">
-        <div class="relative bg-gradient-to-tr from-teal-400 to-purple-600 p-[1px] rounded-md">
-          <a href="#" class="block p-[1px] rounded-lg transform transition">
-            <img class="w-36 h-36 rounded-md" src="https://cdn.discordapp.com/attachments/1063175363070529548/1193385127103975495/download.jpeg?ex=65ac8582&is=659a1082&hm=4ad1e0853b89151ec7858fc1a55d6041fd5a20ef2ddda328d1bf4ead58fa0f8d&" alt="stories_preview">
-          </a>
-        </div>
-  
-        <a href="#">storie_two</a>
-      </li>
-  
-      <li class="flex flex-col items-center space-y-1 ">
-        <div class="relative bg-gradient-to-tr from-teal-400 to-purple-600 p-[1px] rounded-md">
-          <a href="#" class="block p-[1px] rounded-lg transform transition">
-            <img class="w-36 h-36 rounded-md" src="https://cdn.discordapp.com/attachments/1063175363070529548/1194304659825901698/20240109_123927.jpg?ex=65afdde4&is=659d68e4&hm=cb255ef71a96ee9af0959c51bfccd32df4d25a484207d16bf5583899bbd5af31&" alt="stories_preview">
+        <div class="relative bg-gradient-to-tr from-teal-400 to-pink-600 p-[2px] rounded-full">
+          <a href="#" class="block p-[1px] rounded-full transform transition">
+            <img class="w-20 h-20 rounded-full" src="https://cdn.discordapp.com/attachments/1063175363070529548/1194304659825901698/20240109_123927.jpg?ex=65afdde4&is=659d68e4&hm=cb255ef71a96ee9af0959c51bfccd32df4d25a484207d16bf5583899bbd5af31&" alt="stories_preview">
           </a>
         </div>
   
         <a href="#">storie_three</a>
       </li>
-  
-      <li class="flex flex-col items-center space-y-1 ">
-        <div class="relative bg-gradient-to-tr from-teal-400 to-purple-600 p-[1px] rounded-md">
-          <a href="#" class="block p-[1px] rounded-lg transform transition">
-            <img class="w-36 h-36 rounded-md" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2tqh63vJk4VzRzijJGgub3Lmzh7GY8rlYwrZ5srVqPio2JspF021WHJrpRz7aWVgAvGM&usqp=CAU" alt="stories_preview">
-          </a>
-        </div>
-  
-        <a href="#">storie_four</a>
-      </li>
-  
-    </ul>
-  </div>
+
+  </ul>
+</div>

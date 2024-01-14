@@ -8,6 +8,7 @@ import { NewPostComponent } from './components/new-post/new-post.component';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoggedInAuthGuard } from './guards/loggedInAuth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,8 @@ const routes: Routes = [
       path: 'new', component: NewPostComponent, canActivate: [AuthGuard]},
     {
       path: 'view/:id', component: PostViewComponent, canActivate: [AuthGuard]},
+    {
+      path: 'profile/:id', component: ProfileComponent, canActivate: [AuthGuard]},
 
 ];
 

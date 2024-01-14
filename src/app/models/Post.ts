@@ -6,5 +6,6 @@ export class Post{
   feel: string;
   description: string;
   created_at: Date;
+  created_by: string;
   like_count: any;
 }

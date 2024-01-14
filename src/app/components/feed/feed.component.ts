@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Post } from 'src/app/models/post';
+import { Post } from 'src/app/models/Post';
 import { SupabaseService } from 'src/app/supabase.service';
 // import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -29,6 +29,6 @@ export class FeedComponent implements OnInit {
   }
   
   async getPosts() {
-    this.posts = await this.supabaseService.getPosts();
+    this.posts = (await this.supabaseService.getPosts()).reverse();
   }
 }

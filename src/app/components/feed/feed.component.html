@@ -2,7 +2,9 @@
 <!-- component -->
         <div *ngFor="let post of posts" class="bg-black border border-zinc-800 rounded-lg max-w-lg mx-auto mt-5">
             <div class="flex items-center px-4 py-3">
-                <img class="h-8 w-8 rounded-full" [src]="post.avatar_url"/>
+                <a [routerLink]="'/profile/'+post.created_by">
+                    <img class="h-8 w-8 rounded-full" [src]="post.avatar_url"/>
+                </a>
                 <div class="ml-3 ">
                 <span class="text-sm font-semibold antialiased block leading-tight text-white">{{post.username}}</span>
                 <span class="text-gray-400 text-xs block">{{'Feeling: '+ post.feel}}</span>

@@ -17,6 +17,7 @@ import { TextareaAutoresizeDirective } from './textarea-autoresize.directive';
 import { PostViewComponent } from './components/post-view/post-view.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SoriesComponent } from './components/sories/sories.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SoriesComponent } from './components/sories/sories.component';
     TextareaAutoresizeDirective,
     PostViewComponent,
     SoriesComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostgrestBuilder } from '@supabase/postgrest-js';
-import { Post } from 'src/app/models/post';
+import { Post } from 'src/app/models/Post';
 import { SupabaseService } from 'src/app/supabase.service';
 
 
