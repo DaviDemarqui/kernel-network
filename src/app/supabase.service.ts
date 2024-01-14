@@ -13,6 +13,7 @@ import {
 import { environment } from "src/environments/environment";
 import { Post } from "./models/Post";
 import { Comment } from "./models/Comment";
+import { Storie } from "./models/Storie";
 // import { Database } from 'src/schema';
 // Dps ver o porque da linha acima???
 
@@ -25,8 +26,6 @@ export class SupabaseService {
   _session: AuthSession | null = null
 
   jwtHelper: JwtHelperService = new JwtHelperService();
-  idUsuario: string;
-
 
   constructor(
     private router: Router,
@@ -168,7 +167,13 @@ export class SupabaseService {
     return posts.data || [];
   }
 
-  
+  async getStories(): Promise<any[]> {
+    let stories = await this.supabase.from('min_stories_view').select().limit(50);
+    return stories.data || [];
+  }
+
+  // Only functions that use buckets ahead;
+
   async uploadPost(form: FormGroup, selectedFile: File) {
     let post = new Post();
     const { data, error } = await this.supabase.storage.from('post_image').upload(selectedFile.name, selectedFile);
@@ -189,4 +194,21 @@ export class SupabaseService {
     }
   }
 
+  async uploadStories(selectedFile: File) {
+    const storie = new Storie();
+    const { data, error } = await this.supabase.storage.from('stories_image').upload(selectedFile.name, selectedFile);
+    if (error) {
+      console.error(error);
+    } else {
+      try {
+        const { data } = await this.supabase.storage.from('stories_image').getPublicUrl(selectedFile.name);
+        console.log('finded data: ',data);
+        storie.photo = data.publicUrl;
+        storie.archived = false;
+      } catch (error) {
+        console.log('Error downloading image: ', error);
+      }
+    }
+    await this.supabase.from('stories').insert(storie);
+  }
 }

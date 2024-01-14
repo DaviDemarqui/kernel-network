@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Storie } from 'src/app/models/Storie';
 import { SupabaseService } from 'src/app/supabase.service';
 
 @Component({
@@ -8,33 +9,39 @@ import { SupabaseService } from 'src/app/supabase.service';
 })
 export class SoriesComponent implements OnInit {
 
+  stories: any[] = [];
+
+  insertedPhoto: File;
+
   constructor(
     private supabaseService: SupabaseService
   ) { }
 
   ngOnInit(): void {
+    this.getStories();
   }
-
-  storie = {
-    file: null,
-    user_id: 'your_user_id', // replace with the actual user ID
-    viewers: []
-  };
 
   onFileChange(event: any) {
     const fileInput = event.target;
 
     if (fileInput.files && fileInput.files.length > 0) {
-      const file = fileInput.files[0];
-      this.storie.file = file;
+      this.insertedPhoto = fileInput.files[0];
     }
+    this.submitStorie(this.insertedPhoto);
+  }
 
-    this.submitStorie()
+  async getStories() {
+    this.stories = await this.supabaseService.getStories();
   }
 
   // You can call this function when you want to submit the storie object
-  submitStorie() {
-    console.log(this.storie);
+  async submitStorie(selectedFile: File) {
+    console.log('file:', selectedFile);
+    try {
+      this.supabaseService.uploadStories(selectedFile);
+    } catch (error) {
+      alert(error)
+    } 
     // Add your logic to send the storie object to the server or perform other actions
   }
 
