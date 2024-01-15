@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { MinProfile } from 'src/app/models/MinProfile';
 import { SupabaseService } from 'src/app/supabase.service';
 
@@ -19,8 +19,20 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Subscribe to route changes
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.updateComponentState();
+      }
+    });
+    
+    // Initial update
+    this.updateComponentState();
+  }
+
+  updateComponentState() {
     this.isLogged();
-    if(this.logged) {
+    if (this.logged) {
       this.getProfile();
     }
   }

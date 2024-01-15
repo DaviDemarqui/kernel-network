@@ -18,6 +18,8 @@ import { PostViewComponent } from './components/post-view/post-view.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { SoriesComponent } from './components/sories/sories.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { StorieViewerComponent } from './components/storie-viewer/storie-viewer.component';
+import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     PostViewComponent,
     SoriesComponent,
     ProfileComponent,
+    StorieViewerComponent,
+    CreateProfileComponent,
   ],
   imports: [
     BrowserModule,

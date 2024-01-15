@@ -14,6 +14,7 @@ import { environment } from "src/environments/environment";
 import { Post } from "./models/Post";
 import { Comment } from "./models/Comment";
 import { Storie } from "./models/Storie";
+import { Profile } from "./models/Profile";
 // import { Database } from 'src/schema';
 // Dps ver o porque da linha acima???
 
@@ -99,7 +100,9 @@ export class SupabaseService {
 
   async register(email: string, password: string) {
     try {
-      await this.supabase.auth.signUp({ email, password});
+      await this.supabase.auth.signUp({ 
+        email, password, 
+      });
     } catch (error) {
       console.log(error)
     } finally {
@@ -210,5 +213,23 @@ export class SupabaseService {
       }
     }
     await this.supabase.from('stories').insert(storie);
+  }
+
+  async submitProfile(profile: Profile, selectedFile: File) {
+    console.log(profile);
+    console.log(selectedFile)
+    const { error } = await this.supabase.storage.from('avatars').upload(selectedFile.name, selectedFile);
+    if (error) {
+      console.error(error);
+    } else {
+      try {
+        const { data } = await this.supabase.storage.from('avatars').getPublicUrl(selectedFile.name);
+        profile.avatar_url = data.publicUrl;
+        console.log('finded data: ',data);
+      } catch (error) {
+        console.log('Error downloading image: ', error);
+      }
+    }
+    await this.supabase.from('profiles').update(profile).eq('id', profile.id);
   }
 }

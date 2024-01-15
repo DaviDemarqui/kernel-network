@@ -31,18 +31,19 @@ export class SoriesComponent implements OnInit {
   }
 
   async getStories() {
-    this.stories = await this.supabaseService.getStories();
+    console.log('RUNNING GETSTORIES()')
+    this.stories = (await this.supabaseService.getStories()).reverse();
   }
 
-  // You can call this function when you want to submit the storie object
   async submitStorie(selectedFile: File) {
     console.log('file:', selectedFile);
     try {
       this.supabaseService.uploadStories(selectedFile);
     } catch (error) {
       alert(error)
-    } 
-    // Add your logic to send the storie object to the server or perform other actions
+    } finally {
+      await this.getStories();
+    }
   }
 
 }

@@ -23,9 +23,9 @@
             </div>
         </div>
 
-        <button class="my-5 px-5 py-2 font-semibold text-sm border border-gray-400 hover:bg-white hover:text-black">Edit profile</button>
+        <button *ngIf="editing == true" class="my-5 px-5 py-2 font-semibold text-sm border border-gray-400 hover:bg-white hover:text-black">Edit profile</button>
 
-        <p class="mb-3">{{profile?.bio}}</p>
+        <p class="my-3">{{profile?.bio}}</p>
     </div>
     <!-- top header end -->
 

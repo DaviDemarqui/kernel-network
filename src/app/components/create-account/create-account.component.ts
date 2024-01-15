@@ -9,6 +9,7 @@ import { SupabaseService } from 'src/app/supabase.service';
 })
 export class CreateAccountComponent implements OnInit {
   loading = false;
+  emailSent = false;
 
   signInForm = this.formBuilder.group({
     email: '',
@@ -38,6 +39,7 @@ export class CreateAccountComponent implements OnInit {
       } finally {
         this.signInForm.reset()
         this.loading = false
+        this.emailSent = true;
       }
     }
   }

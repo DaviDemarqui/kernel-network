@@ -4,28 +4,26 @@
 
   <ul class="flex space-x-6 overflow-x-auto">
       <li class="flex flex-col items-center space-y-1 ">
-          <div class="relative bg-gradient-to-tr from-slate-400 to-slate-600 p-[2px] rounded-full">
-              <a href="#" class="block p-[1px] rounded-full transform transition">
-                  <img class="w-20 h-20 rounded-full" src="https://i.pinimg.com/736x/5a/a6/6e/5aa66ecba05d2011ce88750e578ba962.jpg" alt="stories_preview">
-              </a>
+          <div class="relative bg-black p-[2px] rounded-full border border-white min-w-[90px]">
+              <div class="block p-[1px] rounded-full transform transition">
+                  <img class="w-20 h-20 rounded-full" src="../../../assets/img/Logo-simples.svg" alt="stories_preview">
+              </div>
                 <label for="fileInput" class="absolute bg-black text-white text-2xl font-medium w-8 h-8 rounded-full bottom-[2px] right-1 flex justify-center items-center font-mono hover:bg-white hover:text-black border-[1px] border-white focus:outline-none cursor-pointer">
                   <input type="file" id="fileInput" class="absolute opacity-0 h-0 w-0 cursor-pointer" (change)="onFileChange($event)" />
                   <div class="transform -translate-y-px mt-1">+</div>
               </label>
                 <!-- Your existing content -->
           </div>
-
-          <a href="#">storie_one</a>
       </li>
 
-      <li *ngFor="let storie of stories" class="flex flex-col items-center space-y-1 ">
-        <div class="relative bg-gradient-to-tr from-teal-400 to-pink-600 p-[2px] rounded-full">
-          <a routerLink="/stories/{{storie.id}}" class="block p-[1px] rounded-full transform transition">
+      <li *ngFor="let storie of stories" class="flex flex-col items-center space-y-1 min-w-[90px]">
+        <a routerLink="/stories/{{storie.story_id}}" class="relative bg-gradient-to-tr from-purple-500 to-rose-500 hover:from-rose-500 hover:to-purple-500 p-[2px] rounded-full">
+          <div class="block p-[1px] rounded-full transform transition">
             <img class="w-20 h-20 rounded-full" [src]="storie.photo" alt="stories_preview">
-          </a>
-        </div>
+          </div>
+        </a>
   
-        <a href="#">storie_three</a>
+        <span class="text-white text-[13px]">{{storie.username}}</span>
       </li>
 
   </ul>

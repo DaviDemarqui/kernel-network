@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   profile: Profile;
   profileId: string;
   userPosts: any[] = [];
+  editing: boolean = false;
 
   constructor(
     private supabaseService: SupabaseService,
@@ -22,7 +23,22 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfile();
+    this.checkEdit()
     this.getUserPosts();
+  }
+
+  async checkEdit() {
+    let userId;
+    await this.supabaseService.getUserId().then(resolvedValue => {
+      userId = resolvedValue;
+    }).catch(error => {
+      console.error("Error:", error);
+    });
+    console.log(userId)
+    console.log(this.profileId)
+    if(userId == this.profileId) {
+      this.editing = true;
+    }
   }
 
   async getProfile() {
