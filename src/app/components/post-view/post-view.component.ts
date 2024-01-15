@@ -26,6 +26,8 @@ export class PostViewComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.criandoForm();
+
     this.route.params.subscribe(params => {
       this.postId = params['id'];
     });
@@ -58,13 +60,13 @@ export class PostViewComponent implements OnInit {
       }).catch(error => {
         console.error("Error:", error);
       });
-      console.log(this.comment)
       await this.supabase.newComment(this.comment)
+      console.log(this.comment)
     } catch (error) {
       alert(error)
     } finally {
-      this.loading = false;
       await this.commentList();
+      this.loading = false;
     }
   }
 
