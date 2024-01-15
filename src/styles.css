@@ -7,3 +7,25 @@
 body {
     background-color: black;
 }
+
+::-webkit-scrollbar {
+    height: 10px;              /* height of horizontal scrollbar ← You're missing this */
+    width: 10px;               /* width of vertical scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: black;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(16, 16, 16);   
+    border-radius: 20px;   
+    border: 1px solid rgb(36, 36, 36);    
+
+  }
+  body::-webkit-scrollbar-thumb:horizontal {
+    background-color: rgb(16, 16, 16);   
+    border-radius: 20px;   
+    border: 1px solid rgb(36, 36, 36);    
+
+  }
