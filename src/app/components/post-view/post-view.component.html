@@ -27,7 +27,7 @@
             <div class="flex justify-between items-center mb-6">
             <h2 class="text-lg lg:text-2xl font-bold text-gray-50">Comments</h2>
         </div>
-        <form class="mb-6" [formGroup]="formComment">
+        <form class="mb-6" [formGroup]="formComment" (ngSubmit)="submitComment()">
             <div class="py-2 px-4 mb-4 bg-black rounded-lg rounded-t-lg border border-zinc-800">
                 <label for="comment" class="sr-only">Your comment</label>
                 <textarea id="comment" formControlName="text" rows="3"
@@ -35,9 +35,9 @@
                     placeholder="Write a comment..." required></textarea>
             </div>
             <button
-                (click)="submitComment()"
+                type="submit"
                 class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-white hover:bg-zinc-200 rounded-lg focus:ring-4 focus:ring-indigo-200">
-                Post comment
+                {{ loading ? 'Loading...' : 'Post Comment'}}
             </button>
         </form>
         <article *ngFor="let comment of comments" class="p-6 mb-6 text-base bg-black rounded-lg">
