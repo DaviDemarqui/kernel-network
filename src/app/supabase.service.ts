@@ -175,6 +175,11 @@ export class SupabaseService {
     return stories.data || [];
   }
 
+  async getStorieById(id: number) {
+    let storie = await this.supabase.from('stories_view').select().eq("story_id", id).single();
+    return storie.data || null;
+  }
+
   // Only functions that use buckets ahead;
 
   async uploadPost(form: FormGroup, selectedFile: File) {
