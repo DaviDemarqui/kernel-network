@@ -1,27 +1,54 @@
-# Kernel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+# KERNEL NETWORK
 
-## Development server
+Kernel Network is side project made with the focus on building a Social Media to have fun with work colegues, Developers and Engineers around the world.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Authors
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- [@DaviDemarqui](https://www.github.com/DaviDemarquiBraga)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Roadmap
 
-## Running end-to-end tests
+- Profile Creation ✅
+- Posts Comments ✅
+- Posts Like ✅
+- Profile Editing ⏳
+- Stories ⏳
+- Follow & Unfollow ❌
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Current Deploy
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+https://kernel-eta.vercel.app/
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/DaviDemarquiBraga/kernel-network
+```
+
+Go to the project directory
+
+```bash
+  cd kernel-network
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  ng serve
+```
+
