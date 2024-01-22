@@ -13,19 +13,13 @@ import { SupabaseService } from 'src/app/supabase.service';
 export class FeedComponent implements OnInit {
 
   posts: Post[] = [];
-  postViewerOpen = false;
   
   constructor(
     private supabaseService: SupabaseService,
-    private router: Router
     ) {}
 
   async ngOnInit(): Promise<void> {
     this.getPosts();
-  }
-
-  openPostViewer(post: Post) {
-      this.router.navigate(['/view', post.post_id]);
   }
   
   async getPosts() {

@@ -15,8 +15,8 @@ import { Post } from "./models/Post";
 import { Comment } from "./models/Comment";
 import { Storie } from "./models/Storie";
 import { Profile } from "./models/Profile";
-// import { Database } from 'src/schema';
-// Dps ver o porque da linha acima???
+import { Like } from "./models/Like";
+
 
 @Injectable({
   providedIn: 'root',
@@ -173,6 +173,36 @@ export class SupabaseService {
   async getStories(): Promise<any[]> {
     let stories = await this.supabase.from('min_stories_view').select().limit(50);
     return stories.data || [];
+  }
+
+  async getStorieById(id: number) {
+    let storie = await this.supabase.from('stories_view').select().eq("story_id", id).single();
+    return storie.data || null;
+  }
+
+  async getLikesForPost(postId: number) {
+    try {
+      let likes = await this.supabase.from('likes').select().eq('post_id', postId).eq('user_id', await this.getUserId());
+      return likes.data || [];
+    } catch (error) {
+      alert(error);
+      console.error('Error fetching likes for the post', error);
+      return []; // or handle the error in an appropriate way
+    }
+  }
+  
+  async likePost(like: Like) {
+    await this.supabase.from('likes').insert(like);
+  }
+
+  async unlikePost(id: number) {
+    const { error } = await this.supabase
+    .from('likes')
+    .delete()
+    .eq('id', id);
+    if (error) {
+      console.error(error);
+    }
   }
 
   // Only functions that use buckets ahead;

@@ -20,6 +20,7 @@ import { SoriesComponent } from './components/sories/sories.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { StorieViewerComponent } from './components/storie-viewer/storie-viewer.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CreateProfileComponent } from './components/create-profile/create-profi
     ProfileComponent,
     StorieViewerComponent,
     CreateProfileComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
