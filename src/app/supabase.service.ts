@@ -16,6 +16,7 @@ import { Comment } from "./models/Comment";
 import { Storie } from "./models/Storie";
 import { Profile } from "./models/Profile";
 import { Like } from "./models/Like";
+import { Followers } from "./models/Followes";
 
 
 @Injectable({
@@ -62,12 +63,6 @@ export class SupabaseService {
     }
     return null;
   }
-
-  // Metodo antigo de login horrivel usando link por email 🤮
-  // signIn(email: string) {
-  //   return this.supabase.auth.signInWithOtp({ email })
-  // }
-
 
   async getUserId() {
     const data = (await this.supabase.auth.getUser()).data.user?.id;
@@ -203,6 +198,27 @@ export class SupabaseService {
     if (error) {
       console.error(error);
     }
+  }
+
+  async follow(follow: Followers) {
+    console.log(follow);
+    await this.supabase.from('followers').insert(follow);
+  }
+
+  async unfollow(userId: any, profileId: any) {
+    console.log('user id: ', userId);
+    console.log('profile id: ', profileId);
+    await this.supabase.from('followers').delete().eq('follower_id', userId).eq('following_id', profileId);
+  }
+
+  // TODO - Fix bug here! The user id is undefined;
+  async getFollowerForCheck(userId: any, profileId: any) {
+    return (await this.supabase.from('followers').select().eq('follower_id', userId).eq('following_id', profileId).single()).data
+  }
+
+  async countFollowers(profileId: any) {
+    let result = (await this.supabase.from('followers').select().eq('following_id', profileId)).data;
+    return result?.length;
   }
 
   // Only functions that use buckets ahead;
