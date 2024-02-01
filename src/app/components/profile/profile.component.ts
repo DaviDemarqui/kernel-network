@@ -26,13 +26,13 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
-    this.getLoggedUser();
-    this.getProfile();
-    this.checkEdit();
-    this.getUserPosts();
-    this.checkFollowing();
-    this.countFollowers();
+  async ngOnInit() {
+    await this.getLoggedUser();
+    await this.getProfile();
+    await this.checkEdit();
+    await this.getUserPosts();
+    await this.checkFollowing();
+    await this.countFollowers();
   }
 
   async checkEdit() {
