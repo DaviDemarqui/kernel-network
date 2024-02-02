@@ -1,7 +1,7 @@
 <section class="h-full pb-20 pt-5 bg-black">
 <!-- component -->
         <app-post 
-            *ngFor="let post of posts"
+            *ngFor="let post of posts; trackBy: trackByPost"
             [post]="post"
         ></app-post>
 </section>

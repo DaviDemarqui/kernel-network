@@ -25,4 +25,8 @@ export class FeedComponent implements OnInit {
   async getPosts() {
     this.posts = (await this.supabaseService.getPosts()).reverse();
   }
+
+  trackByPost(index: number, post: Post): number {
+    return post.post_id;
+  }
 }

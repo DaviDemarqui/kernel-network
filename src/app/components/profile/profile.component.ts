@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   userPosts: any[] = [];
   editing: boolean = false;
 
-  following: Followers;
+  following: boolean;
   followersCount: any;
   followingCount: any;
 
@@ -32,8 +32,7 @@ export class ProfileComponent implements OnInit {
     await this.getProfile();
     await this.checkEdit();
     await this.getUserPosts();
-    await this.checkFollowing();
-    await this.countFollowers();
+    await this.refresher();
   }
 
   async checkEdit() {
@@ -52,12 +51,14 @@ export class ProfileComponent implements OnInit {
 
   async follow() {
     this.supabaseService.follow(new Followers(this.loggedUserId, this.profileId))
-    this.checkFollowing();
+    this.followersCount ++;
+    this.following = true;
   }
 
   async unfollow() {
     this.supabaseService.unfollow(this.loggedUserId, this.profileId)
-    this.checkFollowing();
+    this.followersCount --;
+    this.following = false;
   }
 
   async checkFollowing() {
@@ -66,8 +67,13 @@ export class ProfileComponent implements OnInit {
 
   async countFollowers() {
     this.followersCount = await this.supabaseService.countFollowers(this.profileId);
-    this.followingCount = await this.supabaseService.countFollowing(this.loggedUserId);
+    this.followingCount = await this.supabaseService.countFollowing(this.profileId);
     console.log(this.followersCount);
+  }
+
+  async refresher() {
+    await this.countFollowers();
+    await this.checkFollowing();
   }
 
   async getProfile() {
