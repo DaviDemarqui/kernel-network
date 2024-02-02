@@ -1,10 +1,10 @@
-<div class="max-w-lg mx-auto pt-32">
-  <h2 class="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-pink-600">introducing ...</h2>
-  <p class="text-5xl lg:text-6xl leading-none font-extrabold text-slate-200 mb-8 mt-4">Kernel Network.</p>
+<div class="max-w-lg mx-auto">
+  <!-- <h2 class="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-pink-600">introducing ...</h2>
+  <p class="text-5xl lg:text-6xl leading-none font-extrabold text-slate-200 mb-8 mt-4">Kernel Network.</p> -->
 
 
   <!-- TODO - Uncomment when working 😁 -->
-  <!-- <ul class="flex space-x-6 overflow-x-auto">
+  <ul class="flex space-x-6 overflow-x-auto">
     
      <li class="flex flex-col items-center space-y-1 ">
           <div class="relative bg-black p-[2px] rounded-full border border-white min-w-[90px]">
@@ -16,17 +16,20 @@
                   <div class="transform -translate-y-px mt-1">+</div>
               </label>
           </div>
-      </li> -->
+      </li> 
 
-      <!-- <li *ngFor="let storie of stories" class="flex flex-col items-center space-y-1 min-w-[90px]">
-        <a routerLink="/stories/{{storie.story_id}}" class="relative bg-gradient-to-tr from-purple-500 to-rose-500 hover:from-rose-500 hover:to-purple-500 p-[2px] rounded-full">
+      <li *ngFor="let group of storyGroups | keyvalue" class="flex flex-col items-center space-y-1 min-w-[90px]">
+        <!-- Render the first story in the group -->
+        <a routerLink="/stories/{{group.value[0].story_id}}" class="relative bg-gradient-to-tr from-purple-500 to-rose-500 hover:from-rose-500 hover:to-purple-500 p-[2px] rounded-full">
           <div class="block p-[1px] rounded-full transform transition">
-            <img class="w-20 h-20 rounded-full" [src]="storie.photo" alt="stories_preview">
+            <img class="w-20 h-20 rounded-full" [src]="group.value[0].photo" alt="stories_preview">
           </div>
         </a>
   
-        <span class="text-white text-[13px]">{{storie.username}}</span>
-      </li> 
+        <span class="text-white text-[13px] flex">@{{group.key}} <b *ngIf="group.value.length > 1" class="text-white text-[13px] ml-1 text-rose-500">+{{group.value.length - 1}}</b></span>
+        <!-- If there are more stories in the group, display a counter -->
+        
+      </li>
 
-  </ul> -->
+  </ul>
 </div>

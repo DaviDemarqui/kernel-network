@@ -1,0 +1,41 @@
+<div class="border fixed rounded-lg border-zinc-800 p-2 mt-5 w-full max-w-[500px]">
+    <div class='flex items-center text-sm my-6'>
+      <div class='h-16 w-16 rounded-full'>
+        <img
+          [src]="userProfile?.avatar_url"
+          [alt]="userProfile?.username + ' Photo'"
+          class='rounded-full h-16 w-16'
+        />
+      </div>
+      <div class='flex-1 ml-3'>
+        <p class='text-white'>@{{userProfile?.username}}</p>
+      </div>
+      <p class='text-red-500 font-medium cursor-pointer' (click)="logOut()">Log Out</p>
+    </div>
+    <app-sories></app-sories>
+    <div class='flex items-center justify-between text-sm font-medium'>
+      <p class='text-white'>Suggestions For You</p>
+      <p class='cursor-pointer' style="font-size: 12px;">
+        See All
+      </p>
+    </div>
+    <div *ngFor="let suggestion of suggestionList" class='flex items-center space-x-4 text-sm my-4 p-3 '>
+        <a [routerLink]="'/profile/'+suggestion.id" class="w-full flex">
+            <div class='h-10 w-10 rounded-full'>
+                <img
+                [src]="suggestion?.avatar_url"
+                [alt]="suggestion?.username + ' photo'"
+                class='rounded-full h-10 w-16'
+                />
+            </div>
+            <div class='flex-1 py-2 ml-3'>
+                <p class='text-white hover:text-blue-500'>@{{suggestion?.username}}</p>
+            </div>
+        </a>
+        <p
+          class='text-blue-400 font-medium cursor-pointer'
+        >
+          Follow
+        </p>
+    </div>
+  </div>

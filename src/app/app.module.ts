@@ -21,6 +21,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { StorieViewerComponent } from './components/storie-viewer/storie-viewer.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { PostComponent } from './components/post/post.component';
+import { FollowSuggestionComponent } from './components/follow-suggestion/follow-suggestion.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { PostComponent } from './components/post/post.component';
     StorieViewerComponent,
     CreateProfileComponent,
     PostComponent,
+    FollowSuggestionComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,3 @@
-<!-- 
-<header class="w-screen mb-10 fixed z-50">
-  <nav class="bg-[#0000006b] backdrop-blur-lg px-6 py-2.5 border-b-[1px] border-zinc-800">
-      <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a routerLink="/" class="flex items-center">
-              <img src="../../assets/img/Logo-simples.svg" class="mr-3 h-6 sm:h-9" alt="BeKim Logo" />
-              <span class="self-center text-xl font-semibold whitespace-nowrap text-white">Bekim</span>
-          </a>
-          <div class="justify-between items-center w-full flex w-auto ">
-              <ul class="flex flex-col mt-0 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                  <li *ngIf="logged == false"><a routerLink="login" class="block bg-transparent py-2 pr-4 pl-3 text-white border border-white hover:bg-white hover:text-black rounded-full lg:py-2 lg:px-5">Log In</a></li>
-                  <li *ngIf="logged"><button (click)="logOut()" class="block bg-transparent py-2 pr-4 pl-3 text-white hover:text-red-600 rounded lg:py-2 lg:px-5">Log out</button></li>
-              </ul>
-          </div>
-      </div>
-  </nav>
-</header> -->
-
-
-
-
 <nav class="bg-[#000000b2] backdrop-blur-lg border-b-[1px] border-zinc-800 fixed w-[100vw] z-50">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a *ngIf="logged == false" routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">

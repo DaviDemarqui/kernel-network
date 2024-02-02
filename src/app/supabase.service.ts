@@ -132,6 +132,11 @@ export class SupabaseService {
     return minProfile.data;
   }
 
+  async getRandomMinProfile() {
+    const minProfile = await this.supabase.from('min_profile').select().range(2, 11);
+    return minProfile.data || [];
+  }
+
   async getCompleteProfile() {
     const userId = await this.getUserId();
     const profile = await this.supabase.from('profiles').select().eq('id', userId).single();

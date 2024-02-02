@@ -1,10 +1,18 @@
-<app-sories *ngIf="!postCreationOpen"></app-sories>
+<!-- <app-sories *ngIf="!postCreationOpen"></app-sories> -->
 <body class="bg-black">
+  <div class="pt-10 bg-black"></div>
   <app-new-post *ngIf="postCreationOpen"></app-new-post>
-
-  <div *ngIf="!postCreationOpen" class="relative">
-    <app-feed></app-feed>
-  </div>
+  
+  <main class='py-6 px-10 mx-auto bg-black '>
+    <div *ngIf="!postCreationOpen" class='bg-black lg:grid lg:grid-cols-12 lg:gap-1'>
+      <div class='col-span-8'>
+        <app-feed></app-feed>
+      </div>
+      <div class='col-span-4 bg-black max-md:hidden'>
+        <app-follow-suggestion></app-follow-suggestion>
+      </div>
+    </div>
+  </main>
 
   <!-- POST BUTTONS -->
   <div *ngIf="!postCreationOpen" class="flex justify-center">

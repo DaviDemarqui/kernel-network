@@ -9,6 +9,7 @@ import { SupabaseService } from 'src/app/supabase.service';
 })
 export class SoriesComponent implements OnInit {
 
+  storyGroups: { [username: string]: any[] } = {};
   stories: any[] = [];
 
   insertedPhoto: File;
@@ -33,6 +34,18 @@ export class SoriesComponent implements OnInit {
   async getStories() {
     console.log('RUNNING GETSTORIES()')
     this.stories = (await this.supabaseService.getStories()).reverse();
+    this.groupStories(this.stories);
+  }
+
+  groupStories(stories: any[]) {
+    this.storyGroups = {}
+    stories.forEach(storie => {
+      const username = storie.username;
+      if (!this.storyGroups[username]) {
+        this.storyGroups[username] = [];
+      }
+      this.storyGroups[username].push(storie);
+    })
   }
 
   async submitStorie(selectedFile: File) {
