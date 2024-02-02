@@ -213,15 +213,20 @@ export class SupabaseService {
 
   // TODO - Fix bug here! The user id is undefined;
   async getFollowerForCheck(userId: any, profileId: any) {
-    return (await this.supabase.from('followers').select().eq('follower_id', userId).eq('following_id', profileId).single()).data
+    let f = (await this.supabase.from('followers').select().eq('follower_id', userId).eq('following_id', profileId).single()).data
+    if(f) {
+      return true
+    } else {
+      return false;
+    }
   }
 
   async countFollowers(profileId: any) {
     let result = (await this.supabase.from('followers').select().eq('following_id', profileId)).data;
     return result?.length;
   }
-  async countFollowing(loggedUserId: any) {
-    let result = (await this.supabase.from('followers').select().eq('follower_id', loggedUserId)).data;
+  async countFollowing(profileId: any) {
+    let result = (await this.supabase.from('followers').select().eq('follower_id', profileId)).data;
     return result?.length;
   }
 
