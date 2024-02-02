@@ -220,6 +220,10 @@ export class SupabaseService {
     let result = (await this.supabase.from('followers').select().eq('following_id', profileId)).data;
     return result?.length;
   }
+  async countFollowing(loggedUserId: any) {
+    let result = (await this.supabase.from('followers').select().eq('follower_id', loggedUserId)).data;
+    return result?.length;
+  }
 
   // Only functions that use buckets ahead;
 

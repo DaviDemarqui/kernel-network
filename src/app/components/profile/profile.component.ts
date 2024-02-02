@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
 
   following: Followers;
   followersCount: any;
+  followingCount: any;
 
   constructor(
     private supabaseService: SupabaseService,
@@ -65,6 +66,7 @@ export class ProfileComponent implements OnInit {
 
   async countFollowers() {
     this.followersCount = await this.supabaseService.countFollowers(this.profileId);
+    this.followingCount = await this.supabaseService.countFollowing(this.loggedUserId);
     console.log(this.followersCount);
   }
 
