@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Followers } from 'src/app/models/Followes';
 import { Post } from 'src/app/models/Post';
 import { Profile } from 'src/app/models/Profile';
 import { SupabaseService } from 'src/app/supabase.service';
@@ -13,32 +14,60 @@ export class ProfileComponent implements OnInit {
 
   profile: Profile;
   profileId: string;
+  loggedUserId: any;
   userPosts: any[] = [];
   editing: boolean = false;
+
+  following: Followers;
+  followersCount: any;
+  followingCount: any;
 
   constructor(
     private supabaseService: SupabaseService,
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
-    this.getProfile();
-    this.checkEdit()
-    this.getUserPosts();
+  async ngOnInit() {
+    await this.getLoggedUser();
+    await this.getProfile();
+    await this.checkEdit();
+    await this.getUserPosts();
+    await this.checkFollowing();
+    await this.countFollowers();
   }
 
   async checkEdit() {
-    let userId;
+    if(this.loggedUserId == this.profileId) {
+      this.editing = true;
+    }
+  }
+
+  async getLoggedUser() {
     await this.supabaseService.getUserId().then(resolvedValue => {
-      userId = resolvedValue;
+      this.loggedUserId = resolvedValue;
     }).catch(error => {
       console.error("Error:", error);
     });
-    console.log(userId)
-    console.log(this.profileId)
-    if(userId == this.profileId) {
-      this.editing = true;
-    }
+  }
+
+  async follow() {
+    this.supabaseService.follow(new Followers(this.loggedUserId, this.profileId))
+    this.checkFollowing();
+  }
+
+  async unfollow() {
+    this.supabaseService.unfollow(this.loggedUserId, this.profileId)
+    this.checkFollowing();
+  }
+
+  async checkFollowing() {
+    this.following = await this.supabaseService.getFollowerForCheck(this.loggedUserId, this.profileId);
+  }
+
+  async countFollowers() {
+    this.followersCount = await this.supabaseService.countFollowers(this.profileId);
+    this.followingCount = await this.supabaseService.countFollowing(this.loggedUserId);
+    console.log(this.followersCount);
   }
 
   async getProfile() {
@@ -55,7 +84,7 @@ export class ProfileComponent implements OnInit {
 
   async getUserPosts() {
     if(this.profileId) {
-      this.userPosts = await this.supabaseService.getUserPostsVisit(this.profileId);
+      this.userPosts = (await this.supabaseService.getUserPostsVisit(this.profileId)).reverse();
     } else {
       this.userPosts = await this.supabaseService.getUserPostEdit();
     }

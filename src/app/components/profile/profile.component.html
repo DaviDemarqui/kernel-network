@@ -10,11 +10,11 @@
 
         <div class="flex gap-10 mt-5 text-sm">
             <div class="flex flex-col items-center">
-                <span class="font-bold">10</span>
+                <span class="font-bold">{{followingCount}}</span>
                 <span>Following</span>
             </div>
             <div class="flex flex-col items-center">
-                <span class="font-bold">50</span>
+                <span class="font-bold">{{followersCount}}</span>
                 <span>Followers</span>
             </div>
             <div class="flex flex-col items-center">
@@ -24,6 +24,8 @@
         </div>
 
         <button *ngIf="editing == true" class="my-5 px-5 py-2 font-semibold text-sm border border-gray-400 hover:bg-white hover:text-black">Edit profile</button>
+        <button *ngIf="!editing && !following" (click)="follow()" class="my-5 px-5 py-2 font-semibold text-sm border border-gray-400 hover:bg-white hover:text-black">Follow</button>
+        <button *ngIf="!editing && following" (click)="unfollow()" class="my-5 px-5 py-2 font-semibold text-sm border hover:border-gray-400 bg-white text-black hover:bg-transparent hover:text-white">Unfollow</button>
 
         <p class="my-3">{{profile?.bio}}</p>
     </div>

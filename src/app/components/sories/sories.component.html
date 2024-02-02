@@ -1,9 +1,12 @@
-<div class="max-w-lg mx-auto pt-20">
+<div class="max-w-lg mx-auto pt-32">
   <h2 class="sm:text-lg sm:leading-snug font-semibold tracking-wide uppercase text-pink-600">introducing ...</h2>
-  <p class="text-5xl lg:text-6xl leading-none font-extrabold text-slate-200 mb-8 mt-4">Kernel Stories.</p>
+  <p class="text-5xl lg:text-6xl leading-none font-extrabold text-slate-200 mb-8 mt-4">Kernel Network.</p>
 
-  <ul class="flex space-x-6 overflow-x-auto">
-      <li class="flex flex-col items-center space-y-1 ">
+
+  <!-- TODO - Uncomment when working 😁 -->
+  <!-- <ul class="flex space-x-6 overflow-x-auto">
+    
+     <li class="flex flex-col items-center space-y-1 ">
           <div class="relative bg-black p-[2px] rounded-full border border-white min-w-[90px]">
               <div class="block p-[1px] rounded-full transform transition">
                   <img class="w-20 h-20 rounded-full" src="../../../assets/img/Logo-simples.svg" alt="stories_preview">
@@ -12,11 +15,10 @@
                   <input type="file" id="fileInput" class="absolute opacity-0 h-0 w-0 cursor-pointer" (change)="onFileChange($event)" />
                   <div class="transform -translate-y-px mt-1">+</div>
               </label>
-                <!-- Your existing content -->
           </div>
-      </li>
+      </li> -->
 
-      <li *ngFor="let storie of stories" class="flex flex-col items-center space-y-1 min-w-[90px]">
+      <!-- <li *ngFor="let storie of stories" class="flex flex-col items-center space-y-1 min-w-[90px]">
         <a routerLink="/stories/{{storie.story_id}}" class="relative bg-gradient-to-tr from-purple-500 to-rose-500 hover:from-rose-500 hover:to-purple-500 p-[2px] rounded-full">
           <div class="block p-[1px] rounded-full transform transition">
             <img class="w-20 h-20 rounded-full" [src]="storie.photo" alt="stories_preview">
@@ -24,7 +26,7 @@
         </a>
   
         <span class="text-white text-[13px]">{{storie.username}}</span>
-      </li>
+      </li> 
 
-  </ul>
+  </ul> -->
 </div>
