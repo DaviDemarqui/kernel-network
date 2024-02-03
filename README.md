@@ -18,8 +18,9 @@ Kernel Network is side project made with the focus on building a Social Media to
 - Posts Like ✅
 - Follow & Unfollow ✅
 - Stories ⏳
+- Post Videos ⏳
 - Post Delete ⏳
-- Use Gif as comment ⏳
+- Use Gif as comment ❌
 - Profile Editing ❌
 
 
