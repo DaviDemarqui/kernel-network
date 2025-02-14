@@ -12,15 +12,15 @@ I'm honestly regretted of doing this LMAO ~ Davi Demarqui
 
 ## Roadmap
 
-- Profile Creation ✅
-- Posts Comments ✅
-- Posts Like ✅
-- Follow & Unfollow ✅
-- Stories ⏳
-- Post Videos ⏳
-- Post Delete ⏳
-- Use Gif as comment ❌
-- Profile Editing ❌
+- Profile Creation - Completed ✅
+- Posts Comments - Completed ✅
+- Posts Like - Completed ✅
+- Follow & Unfollow - Completed ✅
+- Stories - In Progress ⏳
+- Post Videos - In Progress ⏳
+- Post Delete - In Progress ⏳
+- Use Gif as comment - To Do ❌
+- Profile Editing - To Do ❌
 
 
 
